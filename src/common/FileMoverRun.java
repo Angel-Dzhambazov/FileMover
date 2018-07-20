@@ -9,7 +9,6 @@ public class FileMoverRun {
 
 
 	private static CopyProcessor copyThread;
-	//the magic happens here
 
 	public static void startTheProgram() {
 		String sourceFolder = Frame1.getSourcePath();
