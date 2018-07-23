@@ -28,6 +28,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.MouseAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 // TODO make a progres bar with moved files
 public class Frame1 {
@@ -44,7 +47,6 @@ public class Frame1 {
 	private JButton btnDestination;
 	private JButton btnStartMoving;
 	private JButton btnStopMoving;
-	private JTextField textField;
 	private boolean sourceAssigned = false;
 	private boolean destinationAssigned = false;
 	private boolean isMoving = false;
@@ -96,6 +98,12 @@ public class Frame1 {
 		lblSource = new JLabel("source:");
 
 		txtSource = new JTextField();
+		txtSource.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+		});
+
 
 		txtSource.setColumns(10);
 
@@ -112,57 +120,69 @@ public class Frame1 {
 		btnDestination = new JButton("grab");
 
 		btnStartMoving = new JButton("Start Moving");
+		btnStartMoving.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+
+			}
+		});
 
 		btnStopMoving = new JButton("Stop Moving");
 
 		GroupLayout groupLayout = new GroupLayout(frmFileMoverGui.getContentPane());
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-				.createSequentialGroup().addGap(26)
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-						.createSequentialGroup()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblDestination, GroupLayout.PREFERRED_SIZE, 64,
-										GroupLayout.PREFERRED_SIZE)
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(26)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblDestination, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblSource, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(txtSource, GroupLayout.PREFERRED_SIZE, 228,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnSource))
+									.addComponent(txtSource, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(btnSource))
 								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(txtDestination, GroupLayout.PREFERRED_SIZE, 228,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnDestination)))
-						.addPreferredGap(ComponentPlacement.RELATED).addPreferredGap(ComponentPlacement.RELATED))
-						.addGroup(groupLayout.createSequentialGroup().addComponent(btnStartMoving)
-								.addPreferredGap(ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
-								.addComponent(btnStopMoving).addGap(20)))
-				.addComponent(pnlLogger, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE).addGap(6)));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
-				groupLayout.createSequentialGroup().addContainerGap().addGroup(groupLayout
-						.createParallelGroup(Alignment.TRAILING)
+									.addComponent(txtDestination, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(btnDestination)))
+							.addPreferredGap(ComponentPlacement.RELATED))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnStartMoving)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnStopMoving)
+							.addGap(20)))
+					.addGap(4)
+					.addComponent(pnlLogger, GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+					.addGap(6))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(pnlLogger, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout
-								.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(txtSource, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnSource))
-								.addGroup(groupLayout.createSequentialGroup().addComponent(lblSource).addGap(32)
-										.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-												.addComponent(lblDestination)
-												.addComponent(txtDestination, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(btnDestination))))
-								.addPreferredGap(ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
-								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(btnStartMoving).addComponent(btnStopMoving))))
-						.addGap(23)));
-
-		textField = new JTextField();
-		pnlLogger.add(textField);
-		textField.setColumns(10);
+									.addComponent(txtSource, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(btnSource))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblSource)
+									.addGap(32)
+									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblDestination)
+										.addComponent(txtDestination, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnDestination))))
+							.addPreferredGap(ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnStopMoving)
+								.addComponent(btnStartMoving))))
+					.addGap(23))
+		);
 		frmFileMoverGui.getContentPane().setLayout(groupLayout);
 
 		JMenuBar menuBar = new JMenuBar();

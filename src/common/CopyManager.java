@@ -32,6 +32,8 @@ public class CopyManager {
 			}
 		}
 
+	
+		
 		File currentFile = null;
 		Path sourcePath;
 		Path destinationPath;
