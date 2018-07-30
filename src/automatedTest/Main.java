@@ -17,7 +17,6 @@ import java.util.Map;
 import common.CopyManager;
 import common.CopyProcessor;
 
-
 public class Main {
 
 	private static Map<Integer, Boolean> tests = new LinkedHashMap<Integer, Boolean>();
@@ -27,11 +26,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-
-
-
-
-		//files into directory 1 and checking if these X
+		// files into directory 1 and checking if these X
 		// files are present in directory 2
 		createTest(1);
 
